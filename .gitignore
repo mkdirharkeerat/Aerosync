@@ -1,0 +1,16 @@
+.DS_Store
+*.swp
+*~
+
+# Swift / macOS build artifacts
+.build/
+build/
+Package.resolved
+
+# Android / Gradle build artifacts
+.gradle/
+local.properties
+*.iml
+.idea/
+app/build/
+*.hprof
