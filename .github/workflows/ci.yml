@@ -1,0 +1,29 @@
+name: macOS Build & Packaging CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-macos:
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Verify Swift Toolchain
+        run: swift --version
+
+      - name: Build AeroSync Release Binary
+        run: |
+          cd AeroSync-macOS
+          swift build -c release
+
+      - name: Bundle AeroSync.app & DMG
+        run: |
+          cd AeroSync-macOS
+          chmod +x build_app.sh
+          ./build_app.sh
