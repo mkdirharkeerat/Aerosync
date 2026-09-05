@@ -15,7 +15,8 @@ RESOURCES="$CONTENTS/Resources"
 rm -rf "$APP_DIR"
 mkdir -p "$MACOS" "$RESOURCES"
 
-cp "$DIR/.build/arm64-apple-macosx/release/AeroSync" "$MACOS/AeroSync"
+BIN_DIR="$(swift build -c release --show-bin-path)"
+cp "$BIN_DIR/AeroSync" "$MACOS/AeroSync"
 cp "$DIR/Resources/AppIcon.icns" "$RESOURCES/AppIcon.icns"
 
 cat << 'PLIST' > "$CONTENTS/Info.plist"
